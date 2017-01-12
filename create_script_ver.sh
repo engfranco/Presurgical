@@ -35,21 +35,26 @@ afni_proc.py \
 	-blur_filter -1blur_fwhm			\
 	-blur_size 6 					\
     	-regress_stim_times ${script_folder}/stim_timing_verbo.txt \
-	-regress_stim_labels VER  	\
+	-regress_stim_labels VER BASE 	\
 	-regress_basis_multi                            \
-		'GAM' \
-        -regress_censor_motion 0.5                      \
+		'GAM' 'BLOCK(20,1)' \
+	-regress_opts_3dD                           \
+                -gltsym 'SYM: +VER -BASE'             \
+                -glt_label 1 VER_vs_BASE     \
+    -regress_censor_motion 0.5                      \
+	-regress_censor_outliers 0.1                    \
 	-regress_opts_3dD                               \
 		-jobs 6					\
 		-local_times 				\
 		-regress_apply_mot_types demean		\
-		-regress_apply_mask
+		-regress_apply_mask \
+	-execute
 
 
 
 # Now run script
 
-tcsh -xef proc.${study}${subj}.${run}.tcsh |& tee output.proc.${study}${subj}.${run}.tcsh
+#tcsh -xef proc.${study}${subj}.${run}.tcsh |& tee output.proc.${study}${subj}.${run}.tcsh
 
 exit
 

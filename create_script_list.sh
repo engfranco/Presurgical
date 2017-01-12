@@ -50,13 +50,14 @@ afni_proc.py \
 		-jobs 6					\
 		-local_times 				\
 		-regress_apply_mot_types demean		\
-		-regress_apply_mask
+		-regress_apply_mask \
+	-execute
 
 
 
 # Now run script
 
-tcsh -xef proc.${study}${subj}.${run}.tcsh |& tee output.proc.${study}${subj}.${run}.tcsh
+#tcsh -xef proc.${study}${subj}.${run}.tcsh |& tee output.proc.${study}${subj}.${run}.tcsh
 
 exit
 

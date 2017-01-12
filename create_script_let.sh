@@ -34,22 +34,29 @@ afni_proc.py \
         -mask_segment_anat yes				\
 	-blur_filter -1blur_fwhm			\
 	-blur_size 6 					\
-    	-regress_stim_times ${script_folder}/stim_timing.txt \
-	-regress_stim_labels LET  	\
+    	-regress_stim_times \
+    		${script_folder}/stim_timing.txt \
+    		${script_folder}/stim_timing_BASELINE.txt \
+	-regress_stim_labels LET BASE	\  	\
 	-regress_basis_multi                            \
-		'BLOCK(20,1)' \
+		'BLOCK(20,1)' 'BLOCK(24,1)' \
+	-regress_opts_3dD                           \
+        -gltsym 'SYM: +LET -BASE'             \
+        -glt_label 1 LET_vs_BASE     \
         -regress_censor_motion 0.5                      \
+        -regress_censor_outliers 0.1                    \
 	-regress_opts_3dD                               \
 		-jobs 6					\
 		-local_times 				\
 		-regress_apply_mot_types demean		\
-		-regress_apply_mask
+		-regress_apply_mask \
+	-execute
 
 
 
 # Now run script
 
-tcsh -xef proc.${study}${subj}.${run}.tcsh |& tee output.proc.${study}${subj}.${run}.tcsh
+#tcsh -xef proc.${study}${subj}.${run}.tcsh |& tee output.proc.${study}${subj}.${run}.tcsh
 
 exit
 
