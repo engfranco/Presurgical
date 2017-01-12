@@ -36,7 +36,7 @@ afni_proc.py \
 	-blur_size 6 					\
     	-regress_stim_times ${script_folder}/stim_timing_MOT_L.txt \
 			    ${script_folder}/stim_timing_MOT_R.txt \
-			    stim_timing_BASELINE.txt \
+			    ${script_folder}/stim_timing_BASELINE.txt \
 	-regress_stim_labels MOT_L MOT_R BASE 		\
 	-regress_basis_multi                            \
 		'BLOCK(20,1)' 'BLOCK(20,1)' 'BLOCK(24,1)' 		\

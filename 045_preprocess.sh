@@ -58,7 +58,7 @@ set rest_run = 1
 #####
 set anat_dicom_NAME = AXI3DFSPGRBRAVO
 set task1_name = MOT_M  # Motor Mao
-set task1_dicom_NAME = FMRIMOTORMAO
+set task1_dicom_NAME = FMRIMOTOR
 set task2_name = MOT_P  # Motor Pé
 set task2_dicom_NAME = FMRIMOTORPE
 set task3_name = VIS  # visão
@@ -128,7 +128,7 @@ set anat_name = ANAT
 	set subjdirectory = `pwd`
 
 
-if (1) then
+if (0) then
 
 	echo coverting dicom files and creating folders
 	##################################################
@@ -203,8 +203,7 @@ if (1) then
 	rm -rfv dicom
 
 
-
-
+endif
 
 
 	echo Creating scripts to process data and also run script
@@ -217,6 +216,9 @@ if (1) then
 	if (${motor_mao_run}) then
 		${scripts_dir}/create_script_motor.sh ${study} ${subj} ${analysisdirectory} ${task1_name} ${scripts_dir}
 	endif
+	
+	exit
+	
 	#2 - Motor Pe
 	if (${motor_pe_run}) then
 		${scripts_dir}/create_script_motor.sh ${study} ${subj} ${analysisdirectory} ${task2_name} ${scripts_dir}
