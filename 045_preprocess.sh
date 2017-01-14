@@ -66,7 +66,7 @@ set task3_dicom_NAME = XXX
 set task4_name = LET  # Letras
 set task4_dicom_NAME = FMRILETRAS
 set task5_name = CAT  # Categorias
-set task5_dicom_NAME = XXX
+set task5_dicom_NAME = FMRICATEGORIAS
 set task6_name = NOM # Nomeação
 set task6_dicom_NAME = FMRINOMEACAO
 set task7_name = RIM # Rima
@@ -203,21 +203,18 @@ if (0) then
 	rm -rfv dicom
 
 
-endif
-
-
 	echo Creating scripts to process data and also run script
 	##################################################
 	# script to create processing scripts 
 	# XXX each "task" will have one line. Lines are different depending on "task" type
 	##################################################
+
+
 	
 	#1 - Motor Mão
 	if (${motor_mao_run}) then
 		${scripts_dir}/create_script_motor.sh ${study} ${subj} ${analysisdirectory} ${task1_name} ${scripts_dir}
 	endif
-	
-	exit
 	
 	#2 - Motor Pe
 	if (${motor_pe_run}) then
@@ -264,7 +261,7 @@ endif
 	endif
 	
 	
-	exit
+	
 endif
 
 

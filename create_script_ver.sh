@@ -34,7 +34,9 @@ afni_proc.py \
         -mask_segment_anat yes				\
 	-blur_filter -1blur_fwhm			\
 	-blur_size 6 					\
-    	-regress_stim_times ${script_folder}/stim_timing_verbo.txt \
+    	-regress_stim_times \
+    	${script_folder}/stim_timing_verbo.txt \
+    	${script_folder}/stim_timing_verbo_BASELINE.txt \
 	-regress_stim_labels VER BASE 	\
 	-regress_basis_multi                            \
 		'GAM' 'BLOCK(20,1)' \

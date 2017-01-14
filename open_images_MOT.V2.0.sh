@@ -94,9 +94,11 @@ sleep 5
 ###########################################
 # Resample stats image to have same resolution at the T1 image
 ###############################################
-3dresample -rmode Cu -master ${study}${subject}.ANAT+orig.HEAD -prefix stats.SUBJ.RESAMP+orig -inset stats.SUBJ+orig.HEAD
+#3dresample -rmode Cu -master ${study}${subject}.ANAT+orig.HEAD -prefix stats.SUBJ.RESAMP+orig -inset stats.SUBJ+orig.HEAD
 
+3dresample -rmode Cu -master ${study}${subject}.ANAT+orig.HEAD -prefix stats.SUBJ.RESAMP_MOT_L+orig -inset stats.SUBJ+orig.HEAD'[11]'
 
+3dresample -rmode Cu -master ${study}${subject}.ANAT+orig.HEAD -prefix stats.SUBJ.RESAMP_MOT_R+orig -inset stats.SUBJ+orig.HEAD'[14]'
 
 
 
@@ -107,7 +109,7 @@ sleep 5
 #################################################
 
 set side = left
-set image = 2
+set image = 0
 
 afni -yesplugouts &
 
@@ -121,7 +123,7 @@ plugout_drive \
 -com "SET_FUNC_RESAM A.NN.NN" \
 -com "SET_FUNC_AUTORANGE A.+" \
 -com "SWITCH_UNDERLAY A.${study}${subject}.ANAT+orig.HEAD 0" \
--com "SET_OVERLAY A.stats.SUBJ.RESAMP+orig.HEAD ${image} ${image}" \
+-com "SET_OVERLAY A.stats.SUBJ.RESAMP_MOT_L+orig.HEAD ${image} ${image}" \
 -com "SET_DICOM_XYZ A -12.467392 -5.726204 46.351200" \
 -com "OPEN_WINDOW A.axialimage geom=807x1076+840+61 ifrac=0.9 mont=6x8:3:0:none opacity=9" \
 -com "OPEN_WINDOW A.sagittalimage geom=633x862+840+59 ifrac=0.89 mont=6x10:5:0:none opacity=9" \
@@ -165,7 +167,7 @@ sleep 5
 #################################################
 
 set side = right
-set image = 5
+set image = 0
 
 afni -yesplugouts &
 
@@ -179,7 +181,7 @@ plugout_drive \
 -com "SET_FUNC_RESAM A.NN.NN" \
 -com "SET_FUNC_AUTORANGE A.+" \
 -com "SWITCH_UNDERLAY A.${study}${subject}.ANAT+orig.HEAD 0" \
--com "SET_OVERLAY A.stats.SUBJ.RESAMP+orig.HEAD ${image} ${image}" \
+-com "SET_OVERLAY A.stats.SUBJ.RESAMP_MOT_R+orig.HEAD ${image} ${image}" \
 -com "SET_DICOM_XYZ A -12.467392 -5.726204 46.351200" \
 -com "OPEN_WINDOW A.axialimage geom=807x1076+840+61 ifrac=0.9 mont=6x8:3:0:none opacity=9" \
 -com "OPEN_WINDOW A.sagittalimage geom=633x862+840+59 ifrac=0.89 mont=6x10:5:0:none opacity=9" \
@@ -217,7 +219,7 @@ plugout_drive \
 sleep 5
 
 
-
+gzip -v *BRIK
 
 exit
 

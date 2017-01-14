@@ -87,8 +87,9 @@ sleep 5
 ###########################################
 # Resample stats image to have same resolution at the T1 image
 ###############################################
-3dresample -rmode Cu -master ${study}${subject}.ANAT+orig.HEAD -prefix stats.SUBJ.RESAMP+orig -inset stats.SUBJ+orig.HEAD
+#3dresample -rmode Cu -master ${study}${subject}.ANAT+orig.HEAD -prefix stats.SUBJ.RESAMP+orig -inset stats.SUBJ+orig.HEAD
 
+3dresample -rmode Cu -master ${study}${subject}.ANAT+orig.HEAD -prefix stats.SUBJ.RESAMP+orig -inset stats.SUBJ+orig.HEAD'[8]'
 
 
 #################################################
@@ -148,7 +149,7 @@ plugout_drive \
 sleep 5
 
 
-
+gzip -v *BRIK
 
 
 
