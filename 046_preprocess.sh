@@ -46,11 +46,8 @@ set verbos_run = 1
 set pseudo_run = 0
 # Listening
 set list_run = 0
-<<<<<<< HEAD
 # Falsas Memorias
-=======
 # Falsa Memorias
->>>>>>> 6e767c43390c4c3872ef63e628c6ad06913ca791
 set falmem_run = 1
 
 
@@ -84,11 +81,8 @@ set task9_name = PALA # Palavras - Pseudopalavras
 set task9_dicom_NAME = XXX
 set task10_name = LIST # Listening
 set task10_dicom_NAME = FMRILISTENING
-<<<<<<< HEAD
 set task11_name = FALSMEM # Falsas Memorias
-=======
 set task11_name = FALMEM # Listening
->>>>>>> 6e767c43390c4c3872ef63e628c6ad06913ca791
 set task11_dicom_NAME = FALSE_MEM
 set rest_name  = RST # Resting state 
 set rest_dicom_NAME = rsFMRI
@@ -102,12 +96,9 @@ cd ..
 set analysisdirectory = `pwd`
 
 
-<<<<<<< HEAD
 ## what is the first volume, default is 3
-=======
 ## what is the first volume, default is 2
 #set first_vol_rest = 2
->>>>>>> 6e767c43390c4c3872ef63e628c6ad06913ca791
 set first_vol_task = 3
 
 ## what is the number of volumes left after removing the first volumes
@@ -144,12 +135,7 @@ set anat_name = ANAT
 	cd ${study}${subj}
 	set subjdirectory = `pwd`
 
-
-<<<<<<< HEAD
-if (1) then
-=======
 if (0) then
->>>>>>> 6e767c43390c4c3872ef63e628c6ad06913ca791
 
 	echo coverting dicom files and creating folders
 	##################################################
@@ -213,11 +199,8 @@ if (0) then
 	endif
 	
 	#11  Falsas Memorias
-<<<<<<< HEAD
-	if (${list_run}) then
-=======
+
 	if (${falmem_run}) then
->>>>>>> 6e767c43390c4c3872ef63e628c6ad06913ca791
 		${scripts_dir}/conv_dicom_create_directories.sh ${study} ${subj} ${subjdirectory} ${task11_name} ${task11_dicom_NAME}
 	endif
 	
@@ -228,16 +211,11 @@ if (0) then
 	endif
 	
 	
-	
 	cd $subjdirectory
 	tar -zcvf dicom.tar.gz dicom
 	rm -rfv dicom
 
-<<<<<<< HEAD
-=======
 endif 
-
->>>>>>> 6e767c43390c4c3872ef63e628c6ad06913ca791
 
 	echo Creating scripts to process data and also run script
 	##################################################
@@ -247,11 +225,8 @@ endif
 
 
 	
-<<<<<<< HEAD
-=======
-	if (0) then
+if (0) then
 	
->>>>>>> 6e767c43390c4c3872ef63e628c6ad06913ca791
 	#1 - Motor Mão
 	if (${motor_mao_run}) then
 		${scripts_dir}/create_script_motor.sh ${study} ${subj} ${analysisdirectory} ${task1_name} ${scripts_dir}
@@ -294,24 +269,12 @@ endif
 	if (${list_run}) then
 		${scripts_dir}/create_script_list.sh ${study} ${subj} ${analysisdirectory} ${task10_name} ${scripts_dir}
 	endif
-	
-<<<<<<< HEAD
-	#11  Falsas Memorias
-	if (${list_run}) then
-		${scripts_dir}/create_script_falmem.sh ${study} ${subj} ${analysisdirectory} ${task11_name} ${scripts_dir}
-	endif
-	
-=======
-	endif
-	
+
 	#11  Falsas Memorias
 	if (${falmem_run}) then
 		${scripts_dir}/create_script_falmem.sh ${study} ${subj} ${analysisdirectory} ${task11_name} ${scripts_dir}
 	endif
-	
-	exit
-	
->>>>>>> 6e767c43390c4c3872ef63e628c6ad06913ca791
+
 	
 	#rest
 	if (${rest_run}) then
@@ -330,12 +293,16 @@ endif
 	echo Now we will generate activation map the image
 
 
+
+
+if (0) then
+
 	#1 - Motor Mão
 	if (${motor_mao_run}) then
 		${scripts_dir}/open_images_MOT.V2.0.sh ${study} ${subj} ${task1_name} ${subjdirectory}
 	endif
 	
-	endif
+
 	#2 - Motor Pe
 	if (${motor_pe_run}) then
 		${scripts_dir}/open_images_MOT.V2.0.sh ${study} ${subj} ${task2_name} ${subjdirectory}
@@ -352,6 +319,10 @@ endif
 	if (${cat_run}) then
 		${scripts_dir}/open_images_CAT.V2.0.sh ${study} ${subj} ${task5_name} ${subjdirectory}
 	endif
+	
+	echo blah2
+	exit
+	
 	#6  Nomeação
 	if (${nom_run}) then
 		${scripts_dir}/open_images_NOM.V2.0.sh ${study} ${subj} ${task6_name} ${subjdirectory}
@@ -373,26 +344,22 @@ endif
 	if (${list_run}) then
 		${scripts_dir}/open_images_LIST.V2.0.sh ${study} ${subj} ${task10_name} ${subjdirectory}
 	endif
-<<<<<<< HEAD
-	
+
+endif
+
+	echo blahhhhh
 	#11  Falsas Memórias
-	if (${list_run}) then
-		${scripts_dir}/open_images_FALMEM.V2.0.sh ${study} ${subj} ${task11_name} ${subjdirectory}
-=======
-		
-	#11  Falsas Memorias
 	if (${falmem_run}) then
-	# don't have a script yet 
-	#	${scripts_dir}/open_images_FALMEM.V2.0.sh ${study} ${subj} ${task11_name} ${subjdirectory}
->>>>>>> 6e767c43390c4c3872ef63e628c6ad06913ca791
+		${scripts_dir}/open_images_FALMEM.V2.0.sh ${study} ${subj} ${task11_name} ${subjdirectory}
 	endif
 	
-	
+if (0) then	
 	#rest
 	if (${rest_run}) then
 		echo No script for rest yet	
 	endif
 
+endif
 
 # XXX pedir o limiar estatistico de cada mapa de ativacao "stat-threshold.txt"
 
@@ -405,6 +372,9 @@ endif
 	# XXX call line for each "task". All tasks call the same script
 	##################################################
 	echo Now we will generate motion estimation figures the image
+
+if (0) then
+
 
 	#1 - Motor Mão
 	if (${motor_mao_run}) then
@@ -446,22 +416,16 @@ endif
 	if (${list_run}) then
 		${scripts_dir}/make_motion_figure.V2.0.sh ${study} ${subj} ${subjdirectory} ${task10_name}
 	endif
-<<<<<<< HEAD
+endif
+
 	#11  Falsas Memórias
-	if (${list_run}) then
-		${scripts_dir}/make_motion_figure.V2.0.sh ${study} ${subj} ${subjdirectory} ${task11_name}
-	endif
-=======
-	#11  Falsas Memorias
 	if (${falmem_run}) then
 		${scripts_dir}/make_motion_figure.V2.0.sh ${study} ${subj} ${subjdirectory} ${task11_name}
 	endif
-	
-	
-	
 
+	
+exit
 
->>>>>>> 6e767c43390c4c3872ef63e628c6ad06913ca791
 	#rest
 	if (${rest_run}) then
 		echo No script for rest yet	
@@ -480,53 +444,3 @@ endif
 exit
 
 
-
-
-####################################################################################
-
-
-
-	#anat
-	if (${anat_run}) then
-		
-	endif
-	#1 - Motor Mão
-	if (${motor_mao_run}) then
-		
-	endif
-	#2 - Motor Pe
-	if (${motor_pe_run}) then
-	
-	endif
-	#3  visão
-	if (${vision_run}) then
-	
-	endif
-	#4  Letras
-	if (${letras_run}) then
-	
-	endif
-	#5 Categorias
-	if (${cat_run}) then
-	
-	endif
-	#6  Nomeação
-	if (${nom_run}) then
-	
-	endif
-	#7 Rima
-	if (${rima_run}) then
-	
-	endif
-	#8  Verbos
-	if (${verbos_run}) then
-	
-	endif
-	#9  Pseudo
-	if (${pseudo_run}) then
-	
-	endif
-	#rest
-	if (${rest_run}) then
-	
-	endif
