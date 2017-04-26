@@ -49,7 +49,7 @@ afni_proc.py \
 		-glt_label 2 false_vs_pergunta		\
 		-gltsym 'SYM: +true -pergunta'		\
 		-glt_label 3 true_vs_pergunta		\
-		-gltsym 'SYM: +0.5*true *0.5*false'		\
+		-gltsym 'SYM: +0.5*true +0.5*false'		\
 		-glt_label 4 true+false		\
 		-regress_censor_motion 0.5                      \
     	-regress_censor_outliers 0.1                    \
