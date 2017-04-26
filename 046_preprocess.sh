@@ -133,7 +133,7 @@ set anat_name = ANAT
 	set subjdirectory = `pwd`
 
 
-if (1) then
+if (0) then
 
 	echo coverting dicom files and creating folders
 	##################################################
@@ -213,6 +213,8 @@ if (1) then
 	tar -zcvf dicom.tar.gz dicom
 	rm -rfv dicom
 
+endif 
+
 
 	echo Creating scripts to process data and also run script
 	##################################################
@@ -221,6 +223,8 @@ if (1) then
 	##################################################
 
 
+	
+	if (0) then
 	
 	#1 - Motor Mão
 	if (${motor_mao_run}) then
@@ -265,10 +269,14 @@ if (1) then
 		${scripts_dir}/create_script_list.sh ${study} ${subj} ${analysisdirectory} ${task10_name} ${scripts_dir}
 	endif
 	
+	endif
+	
 	#11  Falsas Memorias
 	if (${falmem_run}) then
 		${scripts_dir}/create_script_falmem.sh ${study} ${subj} ${analysisdirectory} ${task11_name} ${scripts_dir}
 	endif
+	
+	exit
 	
 	
 	#rest

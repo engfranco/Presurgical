@@ -53,6 +53,7 @@ afni_proc.py \
 		-glt_label 4 true+false		\
 		-regress_censor_motion 0.5                      \
     	-regress_censor_outliers 0.1                    \
+   	-regress_opts_3dD                               \
 		-jobs 6					\
 		-regress_apply_mot_types demean		\
 		-regress_apply_mask \
