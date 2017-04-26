@@ -35,9 +35,15 @@ afni_proc.py \
 	-blur_filter -1blur_fwhm			\
 	-blur_size 6 					\
 	-regress_stim_times \
+<<<<<<< HEAD
     	${script_folder}/TIMING/FALSE_MEM/audio_false.1D  \
         ${script_folder}/TIMING/FALSE_MEM/audio_true.1D   \
 		${script_folder}/TIMING/FALSE_MEM/pergunta.1D     \
+=======
+    	${script_folder}/TIMING/FALMEM/audio_false.1D  \
+        ${script_folder}/TIMING/FALMEM/audio_true.1D   \
+		${script_folder}/TIMING/FALMEM/pergunta.1D     \
+>>>>>>> 6e767c43390c4c3872ef63e628c6ad06913ca791
 	-regress_stim_labels false true pergunta          \
 	-regress_basis_multi                              \
 		'BLOCK(2,1)' 'BLOCK(2,1)' 'BLOCK(4,1)'   \
@@ -49,6 +55,7 @@ afni_proc.py \
 		-glt_label 2 false_vs_pergunta		\
 		-gltsym 'SYM: +true -pergunta'		\
 		-glt_label 3 true_vs_pergunta		\
+<<<<<<< HEAD
 	-regress_censor_motion 0.5                      \
 	-regress_opts_3dD                               \
 		-jobs 6					\
@@ -56,6 +63,17 @@ afni_proc.py \
 		-regress_apply_mot_types demean		\
 		-regress_apply_mask \
 		-execute
+=======
+		-gltsym 'SYM: +0.5*true +0.5*false'		\
+		-glt_label 4 true+false		\
+		-regress_censor_motion 0.5                      \
+    	-regress_censor_outliers 0.1                    \
+   	-regress_opts_3dD                               \
+		-jobs 6					\
+		-regress_apply_mot_types demean		\
+		-regress_apply_mask \
+	-execute
+>>>>>>> 6e767c43390c4c3872ef63e628c6ad06913ca791
 
 
 
