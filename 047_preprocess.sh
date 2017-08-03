@@ -25,7 +25,7 @@ set subj = (047)
 
 # set which scans have been run, put a 0 or a 1
 # Scan number
-set anat_run = 1
+set anat_run = 0
 # Motor mao
 set motor_mao_run = 0
 # Motor pe
@@ -37,11 +37,11 @@ set letras_run = 0
 # Categorias
 set cat_run = 0
 # Nomeação
-set nom_run = 1
+set nom_run = 0
 # Rima
 set rima_run = 0
 # Verbos
-set verbos_run = 1
+set verbos_run = 0
 # Pseudopalavras
 set pseudo_run = 1
 # Listening
@@ -51,7 +51,7 @@ set falmem_run = 0
 
 
 # Resting state
-set rest_run = 1
+set rest_run = 0
 
 # XXXXXXXXXXXXXX
 
@@ -77,9 +77,9 @@ set task7_dicom_NAME = XXX
 set task8_name = VER # Verbos
 set task8_dicom_NAME = FMRIVERBO
 set task9I_name = PALA1 # Palavras - Pseudopalavras I
-set task9I_dicom_NAME = PSEUDOI
+set task9I_dicom_NAME = PSEUDOI_
 set task9II_name = PALA2 # Palavras - Pseudopalavras - II
-set task9II_dicom_NAME = PSEUDOII
+set task9II_dicom_NAME = PSEUDOII_
 set task10_name = LIST # Listening
 set task10_dicom_NAME = FMRILISTENING
 set task11_name = FALSMEM # Falsas Memorias
@@ -132,10 +132,11 @@ set anat_name = ANAT
 
 
 
-
 	cd ${study}${subj}
 	set subjdirectory = `pwd`
 
+
+if (0) then
 
 	echo coverting dicom files and creating folders
 	##################################################
@@ -221,7 +222,6 @@ set anat_name = ANAT
 	rm -rfv dicom
 
 
-
 	echo Creating scripts to process data and also run script
 	##################################################
 	# script to create processing scripts 
@@ -266,7 +266,8 @@ set anat_name = ANAT
 	endif
 	#9  Pseudo
 	if (${pseudo_run}) then
-		echo No script for psudo yet
+#		${scripts_dir}/create_script_palavras.sh ${study} ${subj} ${analysisdirectory} ${task9I_name} ${task9II_name} ${scripts_dir}
+		${scripts_dir}/create_script_palavras.sh ${study} ${subj} ${analysisdirectory} ${scripts_dir}
 	endif
 	
 	#10  Listening
@@ -284,7 +285,6 @@ set anat_name = ANAT
 	if (${rest_run}) then
 		echo No script for rest yet	
 	endif
-	
 	
 	
 endif
@@ -335,7 +335,7 @@ endif
 	endif
 	#9  Pseudo
 	if (${pseudo_run}) then
-		echo No script for psudo yet
+		${scripts_dir}/open_images_PALA.V2.0.sh ${study} ${subj} PALA ${subjdirectory}
 	endif
 	
 	#10  Listening
@@ -401,7 +401,7 @@ endif
 	endif
 	#9  Pseudo
 	if (${pseudo_run}) then
-		echo No script for psudo yet
+		${scripts_dir}/make_motion_figure.V2.0.sh ${study} ${subj} ${subjdirectory} PALA
 	endif
 	#10  Listening
 	if (${list_run}) then
