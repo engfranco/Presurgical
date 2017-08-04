@@ -33,14 +33,14 @@ afni_proc.py \
 	-align_opts_aea -skullstrip_opts 		\
 		-shrink_fac_bot_lim 0.8 		\
 		-no_pushout				\
-		-giant_move                             \
+		-giant_move                 \
         -mask_segment_anat yes				\
 	-blur_filter -1blur_fwhm			\
 	-blur_size 6 					\
     	-regress_stim_times \
     		${script_folder}/stim_timing.txt \
     		${script_folder}/stim_timing_BASELINE.txt \
-	-regress_stim_labels LET BASE	\  	\
+	-regress_stim_labels LET BASE	\
 	-regress_basis_multi                            \
 		'BLOCK(20,1)' 'BLOCK(24,1)' \
 	-regress_opts_3dD                           \

@@ -72,7 +72,7 @@ set task8_name = VER # Verbos
 set task8_dicom_NAME = FMRIVERBO
 set task9_name = PALA # Palavras - Pseudopalavras
 set task9_dicom_NAME = XXX
-set rest_name  = RST # Resting state 
+set rest_name  = RST # Resting state
 set rest_dicom_NAME = rsFMRI
 
 
@@ -97,7 +97,7 @@ set TR = 2.0
 ## name of anatomical scan (no extension)
 set anat_name = ANAT
 ## name of resting-state scan (no extension)
- 
+
 
 
 
@@ -130,7 +130,7 @@ if (0) then
 	##################################################
 	# Convert dicom files no nifti and organizing files
 	##################################################
-		
+
 
 	#anat
 	if (${anat_run}) then
@@ -146,49 +146,49 @@ if (0) then
 	if (${motor_pe_run}) then
 		${scripts_dir}/conv_dicom_create_directories.sh ${study} ${subj} ${subjdirectory} ${task2_name} ${task2_dicom_NAME}
 	endif
-	
+
 	#3  visão
 	if (${vision_run}) then
 		${scripts_dir}/conv_dicom_create_directories.sh ${study} ${subj} ${subjdirectory} ${task3_name} ${task3_dicom_NAME}
 	endif
-	
+
 	#4  Letras
 	if (${letras_run}) then
 		${scripts_dir}/conv_dicom_create_directories.sh ${study} ${subj} ${subjdirectory} ${task4_name} ${task4_dicom_NAME}
 	endif
-	
+
 	#5 Categorias
 	if (${cat_run}) then
 		${scripts_dir}/conv_dicom_create_directories.sh ${study} ${subj} ${subjdirectory} ${task5_name} ${task5_dicom_NAME}
 	endif
-	
+
 	#6  Nomeação
 	if (${nom_run}) then
 		${scripts_dir}/conv_dicom_create_directories.sh ${study} ${subj} ${subjdirectory} ${task6_name} ${task6_dicom_NAME}
 	endif
-	
+
 	#7 Rima
 	if (${rima_run}) then
 		${scripts_dir}/conv_dicom_create_directories.sh ${study} ${subj} ${subjdirectory} ${task7_name} ${task7_dicom_NAME}
 	endif
-	
+
 	#8  Verbos
 	if (${verbos_run}) then
 		${scripts_dir}/conv_dicom_create_directories.sh ${study} ${subj} ${subjdirectory} ${task8_name} ${task8_dicom_NAME}
 	endif
-	
+
 	#9  Verbos
 	if (${pseudo_run}) then
 		${scripts_dir}/conv_dicom_create_directories.sh ${study} ${subj} ${subjdirectory} ${task9_name} ${task9_dicom_NAME}
 	endif
-	
+
 	#rest
 	if (${rest_run}) then
 		${scripts_dir}/conv_dicom_create_directories.sh ${study} ${subj} ${subjdirectory} ${rest_name} ${rest_dicom_NAME}
 	endif
-	
-	
-	
+
+
+
 	cd $subjdirectory
 	tar -zcvf dicom.tar.gz dicom
 	rm -rfv dicom
@@ -201,10 +201,10 @@ endif
 
 	echo Creating scripts to process data and also run script
 	##################################################
-	# script to create processing scripts 
+	# script to create processing scripts
 	# XXX each "task" will have one line. Lines are different depending on "task" type
 	##################################################
-	
+
 	#1 - Motor Mão
 	if (${motor_mao_run}) then
 		${scripts_dir}/create_script_motor.sh ${study} ${subj} ${analysisdirectory} ${task1_name} ${scripts_dir}
@@ -221,8 +221,6 @@ endif
 	if (${letras_run}) then
 		${scripts_dir}/create_script_let.sh ${study} ${subj} ${analysisdirectory} ${task4_name} ${scripts_dir}
 	endif
-	
-	
 	#5 Categorias
 	if (${cat_run}) then
 		${scripts_dir}/create_script_cat.sh ${study} ${subj} ${analysisdirectory} ${task5_name} ${scripts_dir}
@@ -245,11 +243,9 @@ endif
 	endif
 	#rest
 	if (${rest_run}) then
-		echo No script for rest yet	
+		echo No script for rest yet
 	endif
-	
-	
-exit
+
 
 	##################################################
 	# Making activation map figures
@@ -262,7 +258,7 @@ exit
 	if (${motor_mao_run}) then
 		${scripts_dir}/open_images_MOT.V2.0.sh ${study} ${subj} ${task1_name} ${subjdirectory}
 	endif
-	
+
 	endif
 	#2 - Motor Pe
 	if (${motor_pe_run}) then
@@ -298,7 +294,7 @@ exit
 	endif
 	#rest
 	if (${rest_run}) then
-		echo No script for rest yet	
+		echo No script for rest yet
 	endif
 
 
@@ -352,11 +348,11 @@ exit
 	endif
 	#rest
 	if (${rest_run}) then
-		echo No script for rest yet	
+		echo No script for rest yet
 	endif
-	
-	
-	
+
+
+
 
 # XXX tem que pausar para olhar o movimento. Neste momento criar alguns txts para o movimento de cada exame
 
@@ -376,45 +372,45 @@ exit
 
 	#anat
 	if (${anat_run}) then
-		
+
 	endif
 	#1 - Motor Mão
 	if (${motor_mao_run}) then
-		
+
 	endif
 	#2 - Motor Pe
 	if (${motor_pe_run}) then
-	
+
 	endif
 	#3  visão
 	if (${vision_run}) then
-	
+
 	endif
 	#4  Letras
 	if (${letras_run}) then
-	
+
 	endif
 	#5 Categorias
 	if (${cat_run}) then
-	
+
 	endif
 	#6  Nomeação
 	if (${nom_run}) then
-	
+
 	endif
 	#7 Rima
 	if (${rima_run}) then
-	
+
 	endif
 	#8  Verbos
 	if (${verbos_run}) then
-	
+
 	endif
 	#9  Pseudo
 	if (${pseudo_run}) then
-	
+
 	endif
 	#rest
 	if (${rest_run}) then
-	
+
 	endif

@@ -1,7 +1,7 @@
 #! /bin/csh
 
 
-# This is the script to create preprocessing scripts for the 
+# This is the script to create preprocessing scripts for the
 # frases nonsense paradigm
 
 set study = $1
@@ -31,6 +31,7 @@ afni_proc.py \
 	-align_opts_aea -skullstrip_opts 		\
 		-shrink_fac_bot_lim 0.8 		\
 		-no_pushout				\
+		-giant_move   \
         -mask_segment_anat yes				\
 	-blur_filter -1blur_fwhm			\
 	-blur_size 6 					\
@@ -63,7 +64,7 @@ afni_proc.py \
 exit
 
 ################################################
-# extra notes 
+# extra notes
 
 
 		-gltsym 'SYM: +sem -base'               \
@@ -99,15 +100,15 @@ exit
             Please see "3dAllineate -help" for more information.
 
 
-  -skullstrip_opts    
+  -skullstrip_opts
       use:                Alternate options for 3dSkullstrip.
                           like -rat or -blur_fwhm 2
 
 
 Problems down below:
-        + Piece of cerbellum missing, reduce -shrink_fac_bot_lim 
+        + Piece of cerbellum missing, reduce -shrink_fac_bot_lim
           from default value.
-        + Leakage in lower areas, increase -shrink_fac_bot_lim 
+        + Leakage in lower areas, increase -shrink_fac_bot_lim
           from default value.
 
 
@@ -132,6 +133,3 @@ s
 # extra commands
  -volreg_tlrc_warp                                  \
 	-do_block despike tshift align tlrc volreg blur mask scale regress \
-
-
-

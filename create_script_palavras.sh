@@ -1,7 +1,7 @@
 #! /bin/csh
 
 
-# This is the script to create preprocessing scripts for the 
+# This is the script to create preprocessing scripts for the
 # frases nonsense paradigm
 
 set study = $1
@@ -30,6 +30,7 @@ afni_proc.py \
 	-align_opts_aea -skullstrip_opts 					\
 		-shrink_fac_bot_lim 0.8 						\
 		-no_pushout										\
+		-giant_move   \
         -mask_segment_anat yes							\
 	-blur_filter -1blur_fwhm							\
 	-blur_size 6 					\
@@ -61,8 +62,3 @@ cd PROC.PALA
 gzip -v *BRIK
 
 exit
-
-
-
-
-

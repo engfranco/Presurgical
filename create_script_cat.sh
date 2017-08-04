@@ -31,7 +31,7 @@ afni_proc.py \
 	-align_opts_aea -skullstrip_opts 		\
 		-shrink_fac_bot_lim 0.8 		\
 		-no_pushout				\
-		-giant_move                             \
+		-giant_move   \
         -mask_segment_anat yes				\
 	-blur_filter -1blur_fwhm			\
 	-blur_size 6 					\
