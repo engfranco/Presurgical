@@ -1,7 +1,7 @@
 #! /bin/csh
 
 
-# This is the script to create preprocessing scripts for the 
+# This is the script to create preprocessing scripts for the
 # frases nonsense paradigm
 
 set study = $1
@@ -18,6 +18,8 @@ echo $script_folder
 
 
 
+#python2.7 /Applications/afni/afni_proc.py \
+
 afni_proc.py \
 	-script proc.${study}${subj}.${run}.tcsh 	\
 	-out_dir PROC.${run} 				\
@@ -31,6 +33,7 @@ afni_proc.py \
 	-align_opts_aea -skullstrip_opts 		\
 		-shrink_fac_bot_lim 0.8 		\
 		-no_pushout				\
+		-giant_move                             \
         -mask_segment_anat yes				\
 	-blur_filter -1blur_fwhm			\
 	-blur_size 6 					\
@@ -59,4 +62,3 @@ afni_proc.py \
 #tcsh -xef proc.${study}${subj}.${run}.tcsh |& tee output.proc.${study}${subj}.${run}.tcsh
 
 exit
-
