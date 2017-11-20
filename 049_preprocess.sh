@@ -311,10 +311,13 @@ set anat_name = ANAT
 	if (${vision_run}) then
 		${scripts_dir}/open_images_VIS.V2.0.sh ${study} ${subj} ${task3_name} ${subjdirectory}
 	endif
+
+
 	#4  Letras
 	if (${letras_run}) then
 		${scripts_dir}/open_images_LET.V2.0.sh ${study} ${subj} ${task4_name} ${subjdirectory}
 	endif
+
 	#5 Categorias
 	if (${cat_run}) then
 		${scripts_dir}/open_images_CAT.V2.0.sh ${study} ${subj} ${task5_name} ${subjdirectory}
