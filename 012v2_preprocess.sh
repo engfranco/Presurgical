@@ -221,6 +221,8 @@ set anat_name = ANAT
 	rm -rfv dicom
 
 
+
+
 	echo Creating scripts to process data and also run script
 	##################################################
 	# script to create processing scripts
@@ -284,8 +286,6 @@ set anat_name = ANAT
 	if (${rest_run}) then
 		echo No script for rest yet
 	endif
-
-
 
 
 
