@@ -142,6 +142,8 @@ set anat_name = ANAT
 	##################################################
 
 
+
+
 	#anat
 	if (${anat_run}) then
 		${scripts_dir}/conv_dicom_create_directories.sh ${study} ${subj} ${subjdirectory} ${anat_name} ${anat_dicom_NAME}
@@ -282,7 +284,7 @@ set anat_name = ANAT
 
 	#rest
 	if (${rest_run}) then
-		${scripts_dir}/create_script_RST.sh ${study} ${subj} ${analysisdirectory} ${task11_name} ${scripts_dir}
+		${scripts_dir}/create_script_RST.sh ${study} ${subj} ${analysisdirectory} ${rest_name} ${scripts_dir}
 	endif
 
 
@@ -351,12 +353,11 @@ set anat_name = ANAT
 
 	#rest
 	if (${rest_run}) then
-		echo No script for rest yet, this we need to do manually 
+		echo No script for rest yet, this we need to do manually
 	endif
 
 
 # XXX pedir o limiar estatistico de cada mapa de ativacao "stat-threshold.txt"
-
 
 
 
@@ -417,7 +418,7 @@ set anat_name = ANAT
 
 	#rest
 	if (${rest_run}) then
-		echo No script for rest yet
+		${scripts_dir}/make_motion_figure.V2.0.sh ${study} ${subj} ${subjdirectory} ${rest_name}
 	endif
 
 

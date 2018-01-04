@@ -2,9 +2,9 @@
 
 
 ### In this script we will read the dicom files and convert them to NII and organise by folders.
-### Note, this script assumes that the subject folder exists, and inside it there is a "dicom" folder in it with the 
+### Note, this script assumes that the subject folder exists, and inside it there is a "dicom" folder in it with the
 ### dicom files in it. Also, it assumes that the files where downloaded using the dcmget.sh scritp
-### 
+###
 ### Author: Alexandre Franco
 ### Sept 19th, 2016
 
@@ -21,7 +21,7 @@ set run_dicom_folder = $argv[5]
 
 
 ###########################@@@@@@@@@@@@@@@@@@@@
- 
+
 # go to subject folder
 cd subj_folder
 
@@ -46,7 +46,3 @@ if (-f o*nii*) then
 	rm o*nii*
 	rm co*nii*
 endif
-
-
-
-

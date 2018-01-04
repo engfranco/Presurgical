@@ -19,9 +19,10 @@ set script_folder = $4
 afni_proc.py \
 	-script proc.${study}${subj}.${run}.tcsh 			\
 	-out_dir PROC.${run} 								\
-	-dsets ${run}/${study}${subj}.${run}1.nii.gz		\
+	-dsets ${run}/${study}${subj}.${run}.nii.gz		\
 	-copy_anat ANAT/${study}${subj}.ANAT.nii.gz			\
- 	-do_block  despike  align scale mask regress		  					\
+# 	-do_block  despike  align scale mask regress		  					\
+	-do_block  despike  align 		  					\
 	-tcat_remove_first_trs 3                        	\
 	-tshift_opts_ts -tpattern alt+z						\
 	-volreg_align_to first								\
@@ -45,11 +46,12 @@ afni_proc.py \
 		-regress_est_blur_errts                                         	\
 		-execute
 
-
+		cd PROC.${run}
+		gzip -v *BRIK
 
 	exit
 
-	
+
 #    -regress_stim_times ${script_folder}/TIMING/PSEUDO/timing_PALA_reg.txt  \
 #	${script_folder}/TIMING/PSEUDO/timing_PALA_ireg.txt \
 #	${script_folder}/TIMING/PSEUDO/timing_PALA_pseudo.txt \
